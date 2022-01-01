@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+        <link
+            rel="shortcut icon"
+            href="https://shop.gbo.com/favicon.ico"
+            type="image/x-icon"
+        />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+            rel="stylesheet"
+        />
+        <title>greiner bio-one</title>
+        <link rel="stylesheet" href="./style.css" />
+    </head>
+
+    <body>
+        <div class="container">
+            <header>
+                <img
+                    src="https://www.gbo.com/assets/img/logo.svg"
+                    alt="greiner bio-one logo"
+                />
+            </header>
+            <form>
+                <input
+                    class="first-case"
+                    name="firstCase"
+                    id="firstCase"
+                    type="text"
+                    placeholder="first case"
+                    required
+                />
+                <input
+                    class="last-case"
+                    name="lastCase"
+                    id="lastCase"
+                    type="text"
+                    placeholder="last case"
+                    required
+                />
+                <input
+                    class="su-number"
+                    name="su-number"
+                    id="suNumber"
+                    type="text"
+                    placeholder="su number"
+                />
+                <input
+                    class="qir-number"
+                    name="qir-number"
+                    id="qirNumber"
+                    type="text"
+                    placeholder="qir number"
+                />
+                <div class="inner-flex-container">
+                    <div class="checkboxes">
+                        <label for="STU" class="STU-label"
+                            >STU
+                            <input
+                                class="STU-checkbox"
+                                type="radio"
+                                id="checkbox"
+                                name="amount"
+                                value="STU"
+                            />
+                        </label>
+                        <label for="custom" class="custom-amount-label"
+                            >custom amount
+                            <input
+                                class="custom-amount"
+                                type="radio"
+                                id="custom-amount-checkbox"
+                                name="amount"
+                                value="custom"
+                            />
+                        </label>
+                    </div>
+                    <div class="custom-amount-container">
+                        <input
+                            type="text"
+                            class="custom-amount-input"
+                            placeholder="pieces per case..."
+                            value="1200"
+                        />
+                    </div>
+
+                    <button class="submit-btn" id="submitBtn">submit</button>
+                </div>
+            </form>
+
+            <div id="overlay" class="overlay">
+                <div id="modal" class="modal" tabindex="0">
+                    <div class="flex-container">
+                        <div class="email-section">
+                            <h2>Email:</h2>
+                            <div id="email-container">
+                                <p>Greetings,</p>
+                                <p class="email-body"></p>
+                                <p>Best Regards</p>
+                            </div>
+                        </div>
+                        <div class="copy-icon" id="email-copy-icon">
+                            <img src="./icons/copy.png" alt="copy" />
+                        </div>
+                    </div>
+                    <hr />
+
+                    <div class="flex-container">
+                        <div class="status-list-section">
+                            <h2>QIR Status List:</h2>
+                            <p class="status-list-body"></p>
+                        </div>
+                        <div class="copy-icon" id="status-list-copy-icon">
+                            <img src="./icons/copy.png" alt="copy" />
+                        </div>
+                    </div>
+                    <hr />
+
+                    <div class="flex-container">
+                        <div class="map-section">
+                            <h2>Map:</h2>
+                            <p class="map-body"></p>
+                        </div>
+                        <div class="copy-icon" id="map-copy-icon">
+                            <img src="./icons/copy.png" alt="copy" />
+                        </div>
+                    </div>
+
+                    <i
+                        id="closeModal"
+                        class="fa fa-times-circle-o close-modal"
+                    ></i>
+                </div>
+            </div>
+            <div id="resultsArea"></div>
+        </div>
+
+        <script defer src="./script.js"></script>
+    </body>
+</html>
