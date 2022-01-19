@@ -50,9 +50,10 @@ emailSendBtn.addEventListener("click", () => {
         "href",
         `mailto:peter.xiong@gbo.com;king.vang@gbo.com;paul.chastain@gbo.com&cc=asa.kelly@gbo.com&body=${text}`
     )
-    emailSendBtn.innerHTML = `<span>Email sent!</span>`
+    emailSendBtn.innerHTML = `<span class="email-send-btn">Email sent!</span>`
     setTimeout(() => {
-        emailSendBtn.innerHTML = "<span>Send Email</span>"
+        emailSendBtn.innerHTML =
+            '<span class="email-send-btn">Send Email</span>'
     }, 2000)
 })
 
