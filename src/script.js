@@ -11,7 +11,7 @@ const qirNumber = document.getElementById("qirNumber")
 const container = document.getElementById("container")
 const closeModal = document.getElementById("closeModal")
 const overlay = document.getElementById("overlay")
-const emailCopy = document.getElementById("email-copy-icon")
+const emailSendBtn = document.getElementById("email-send-btn")
 const statusListCopy = document.getElementById("status-list-copy-icon")
 const mapCopy = document.getElementById("map-copy-icon")
 const emailContainer = document.getElementById("email-container")
@@ -44,19 +44,16 @@ lastCase.addEventListener("keypress", function (e) {
     }
 })
 
-emailCopy.addEventListener("click", () => {
+emailSendBtn.addEventListener("click", () => {
     const text = emailContainer.textContent
-    navigator.clipboard
-        .writeText(text)
-        .then(() => {
-            emailCopy.innerHTML = `<span>Copied!</span>`
-            setTimeout(() => {
-                emailCopy.innerHTML = `<img src="./icons/copy.png" alt="copy" />`
-            }, 2000)
-        })
-        .catch((err) => {
-            console.log("Error in copying text: ", err)
-        })
+    emailSendBtn.setAttribute(
+        "href",
+        `mailto:peter.xiong@gbo.com;king.vang@gbo.com;paul.chastain@gbo.com&cc=asa.kelly@gbo.com&body=${text}`
+    )
+    emailSendBtn.innerHTML = `<span>Email sent!</span>`
+    setTimeout(() => {
+        emailSendBtn.innerHTML = "<span>Send Email</span>"
+    }, 2000)
 })
 
 statusListCopy.addEventListener("click", () => {
@@ -138,11 +135,13 @@ function addItem(e) {
         itemContainer.addEventListener("click", () => {
             overlay.style.display = "block"
             if (box1 === box2) {
-                emailBody.textContent = `Case ${box1} (${amount.resultPcs.toLocaleString()} pcs) needs to be transferred in SAP on SU ${suNumberValue}.  This is physically located in Q10 QA2.`
+                const emailContent = `Case ${box1} (${amount.resultPcs.toLocaleString()} pcs) needs to be transferred in SAP on SU ${suNumberValue}.  This is physically located in Q10 QA2.`
+                emailBody.textContent = emailContent
                 statusListBody.textContent = `Q10: ${box1}, #${suNumberValue}`
                 mapBody.textContent = `${qirNumberValue} (${box1})`
             } else {
-                emailBody.textContent = `Cases ${box1} - ${box2} (${amount.resultPcs.toLocaleString()} pcs) need to be transferred in SAP on SU ${suNumberValue}.  These are physically located in Q10 QA2.`
+                const emailContent = `Cases ${box1} - ${box2} (${amount.resultPcs.toLocaleString()} pcs) need to be transferred in SAP on SU ${suNumberValue}.  These are physically located in Q10 QA2.`
+                emailBody.textContent = emailContent
                 statusListBody.textContent = `Q10: ${box1} - ${box2}, #${suNumberValue}`
                 mapBody.textContent = `${qirNumberValue} (${box1} - ${box2})`
             }

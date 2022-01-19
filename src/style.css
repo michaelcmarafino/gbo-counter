@@ -102,6 +102,10 @@ form {
     width: 35ch;
 }
 
+.email-send-btn {
+    color: black;
+}
+
 .email-section,
 .status-list-section {
     margin-bottom: 1em;
