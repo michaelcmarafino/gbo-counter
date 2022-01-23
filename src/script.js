@@ -44,19 +44,6 @@ lastCase.addEventListener("keypress", function (e) {
     }
 })
 
-emailSendBtn.addEventListener("click", () => {
-    const text = emailContainer.textContent
-    emailSendBtn.setAttribute(
-        "href",
-        `mailto:peter.xiong@gbo.com;king.vang@gbo.com;paul.chastain@gbo.com&cc=asa.kelly@gbo.com&body=${text}`
-    )
-    emailSendBtn.innerHTML = `<span class="email-send-btn">Email sent!</span>`
-    setTimeout(() => {
-        emailSendBtn.innerHTML =
-            '<span class="email-send-btn">Send Email</span>'
-    }, 2000)
-})
-
 statusListCopy.addEventListener("click", () => {
     const text = statusListBody.textContent
     navigator.clipboard
@@ -136,15 +123,40 @@ function addItem(e) {
         itemContainer.addEventListener("click", () => {
             overlay.style.display = "block"
             if (box1 === box2) {
-                const emailContent = `Case ${box1} (${amount.resultPcs.toLocaleString()} pcs) needs to be transferred in SAP on SU ${suNumberValue}.  This is physically located in Q10 QA2.`
+                const emailContent = `Case ${box1} (${amount.resultPcs.toLocaleString()} pcs) needs to be transferred in SAP on SU ${suNumberValue}. This is physically located in Q10 QA2.`
                 emailBody.textContent = emailContent
                 statusListBody.textContent = `Q10: ${box1}, #${suNumberValue}`
                 mapBody.textContent = `${qirNumberValue} (${box1})`
+
+                emailSendBtn.addEventListener("click", () => {
+                    emailSendBtn.setAttribute(
+                        "href",
+                        `mailto:peter.xiong@gbo.com,king.vang@gbo.com,paul.chastain@gbo.com?cc=asa.kelly@gbo.com&subject=QIR%20${qirNumberValue}&body=Greetings,%0A%0A${emailContent}%0A%0ABest Regards`
+                    )
+                    emailSendBtn.innerHTML = `<span class="email-send-btn">Email sent!</span>`
+                    setTimeout(() => {
+                        emailSendBtn.innerHTML =
+                            '<span class="email-send-btn">Send Email</span>'
+                    }, 2000)
+                })
             } else {
-                const emailContent = `Cases ${box1} - ${box2} (${amount.resultPcs.toLocaleString()} pcs) need to be transferred in SAP on SU ${suNumberValue}.  These are physically located in Q10 QA2.`
+                const emailContent = `Cases ${box1} - ${box2} (${amount.resultPcs.toLocaleString()} pcs) need to be transferred in SAP on SU ${suNumberValue}. These are physically located in Q10 QA2.`
                 emailBody.textContent = emailContent
                 statusListBody.textContent = `Q10: ${box1} - ${box2}, #${suNumberValue}`
                 mapBody.textContent = `${qirNumberValue} (${box1} - ${box2})`
+
+                emailSendBtn.addEventListener("click", () => {
+                    console.log(emailContent.replace(/\s+/g, "-"))
+                    emailSendBtn.setAttribute(
+                        "href",
+                        `mailto:peter.xiong@gbo.com,king.vang@gbo.com,paul.chastain@gbo.com?cc=asa.kelly@gbo.com&subject=QIR%20${qirNumberValue}&body=Greetings,%0A%0A${emailContent}%0A%0ABest Regards`
+                    )
+                    emailSendBtn.innerHTML = `<span class="email-send-btn">Email sent!</span>`
+                    setTimeout(() => {
+                        emailSendBtn.innerHTML =
+                            '<span class="email-send-btn">Send Email</span>'
+                    }, 2000)
+                })
             }
         })
 
