@@ -131,7 +131,7 @@ function addItem(e) {
                 emailSendBtn.addEventListener("click", () => {
                     emailSendBtn.setAttribute(
                         "href",
-                        `mailto:peter.xiong@gbo.com,king.vang@gbo.com,paul.chastain@gbo.com?cc=asa.kelly@gbo.com&subject=QIR%20${qirNumberValue}&body=Greetings,%0A%0A${emailContent}%0A%0ABest Regards`
+                        `mailto:peter.xiong@gbo.com; king.vang@gbo.com; paul.chastain@gbo.com?cc=asa.kelly@gbo.com&subject=QIR%20${qirNumberValue}&body=Greetings,%0A%0A${emailContent}%0A%0ABest Regards`
                     )
                     emailSendBtn.innerHTML = `<span class="email-send-btn">Email sent!</span>`
                     setTimeout(() => {
@@ -146,10 +146,9 @@ function addItem(e) {
                 mapBody.textContent = `${qirNumberValue} (${box1} - ${box2})`
 
                 emailSendBtn.addEventListener("click", () => {
-                    console.log(emailContent.replace(/\s+/g, "-"))
                     emailSendBtn.setAttribute(
                         "href",
-                        `mailto:peter.xiong@gbo.com,king.vang@gbo.com,paul.chastain@gbo.com?cc=asa.kelly@gbo.com&subject=QIR%20${qirNumberValue}&body=Greetings,%0A%0A${emailContent}%0A%0ABest Regards`
+                        `mailto:peter.xiong@gbo.com; king.vang@gbo.com; paul.chastain@gbo.com?cc=asa.kelly@gbo.com&subject=QIR%20${qirNumberValue}&body=Greetings,%0A%0A${emailContent}%0A%0ABest Regards`
                     )
                     emailSendBtn.innerHTML = `<span class="email-send-btn">Email sent!</span>`
                     setTimeout(() => {
