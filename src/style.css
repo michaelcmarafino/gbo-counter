@@ -87,6 +87,7 @@ form {
     justify-content: space-between;
 }
 
+.send-btn,
 .copy-icon {
     border-radius: 5px;
     padding: 0.3em;
@@ -233,6 +234,14 @@ input[type="radio"] {
 
     .modal {
         max-width: 400px;
+    }
+
+    .email-body {
+        max-width: 250px;
+    }
+
+    .send-btn {
+        width: 50px;
     }
 }
 
