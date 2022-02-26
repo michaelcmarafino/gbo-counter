@@ -1,5 +1,5 @@
 # GBO counter
 
-A Pen created on CodePen.io. Original URL: [https://codepen.io/mmarafino/pen/MWyJaRM](https://codepen.io/mmarafino/pen/MWyJaRM).
+To be used by Greiner Bio-One Quality Control to assist with and identify correct items and quantites that are to be placed in quarantine.
 
 
