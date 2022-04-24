@@ -53,8 +53,6 @@ form {
 }
 
 .overlay {
-    display: none;
-    position: absolute;
     top: 0;
     bottom: 0;
     right: 0;
@@ -64,12 +62,12 @@ form {
     background: rgba(0, 0, 0, 0.45);
     z-index: 100;
     position: fixed;
+    display: grid;
+    place-content: center;
 }
 
 .modal {
-    top: 15%;
     padding: 20px;
-    margin: 0 auto;
     max-width: 500px;
     position: relative;
     background: white;
@@ -221,8 +219,16 @@ input[type="radio"] {
     cursor: pointer;
 }
 
+.hide {
+    display: none;
+}
+
+.show {
+    display: grid;
+}
+
 /* Media Queries */
-@media (max-width: 775px) {
+@media all and (max-width: 775px) {
     form {
         /* padding: 1em 1.2em 2em; */
         flex-direction: column;
@@ -245,7 +251,7 @@ input[type="radio"] {
     }
 }
 
-@media (max-width: 500px) {
+@media all and (max-width: 500px) {
     #resultsArea {
         display: block;
         max-width: 350px;

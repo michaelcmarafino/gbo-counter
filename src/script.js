@@ -23,13 +23,13 @@ let isSTU = false
 let isCustomInputShowing = false
 
 // Event Listeners
-checkbox.addEventListener("change", (e) => {
+checkbox.addEventListener("change", e => {
     e.target.value === "STU" ? (isSTU = true) : (isSTU = false)
     isCustomInputShowing = false
     customAmtContainer.style.display = "none"
 })
 
-customAmtCheckbox.addEventListener("change", (e) => {
+customAmtCheckbox.addEventListener("change", e => {
     if (e.target.value === "custom") {
         isCustomInputShowing = true
         customAmtContainer.style.display = "flex"
@@ -54,7 +54,7 @@ statusListCopy.addEventListener("click", () => {
                 statusListCopy.innerHTML = `<img src="./icons/copy.png" alt="copy" />`
             }, 2000)
         })
-        .catch((err) => {
+        .catch(err => {
             console.log("Error in copying text: ", err)
         })
 })
@@ -69,7 +69,7 @@ mapCopy.addEventListener("click", () => {
                 mapCopy.innerHTML = `<img src="./icons/copy.png" alt="copy" />`
             }, 2000)
         })
-        .catch((err) => {
+        .catch(err => {
             console.log("Error in copying text: ", err)
         })
 })
@@ -121,7 +121,8 @@ function addItem(e) {
             deleteBtn.classList.remove("delete-btn-show")
         })
         itemContainer.addEventListener("click", () => {
-            overlay.style.display = "block"
+            overlay.classList.add("show")
+            overlay.classList.remove("hide")
             if (box1 === box2) {
                 const emailContent = `Case ${box1} (${amount.resultPcs.toLocaleString()} pcs) needs to be transferred in SAP on SU ${suNumberValue}. This is physically located in Q10 QA2.`
                 emailBody.textContent = emailContent
@@ -159,14 +160,12 @@ function addItem(e) {
             }
         })
 
-        deleteBtn.addEventListener("click", (e) => {
+        deleteBtn.addEventListener("click", e => {
             itemContainer.remove()
             e.stopPropagation()
         })
 
-        closeModal.addEventListener("click", () => {
-            overlay.style.display = "none"
-        })
+        overlay.addEventListener("click", hideModal)
 
         firstCase.focus()
         firstCase.value = ""
@@ -189,5 +188,12 @@ function total(first, last) {
     return {
         result: result,
         resultPcs: resultPcs,
+    }
+}
+
+function hideModal(e) {
+    if (e.target.id === "closeModal" || e.target.id === "overlay") {
+        overlay.classList.add("hide")
+        overlay.classList.remove("show")
     }
 }
